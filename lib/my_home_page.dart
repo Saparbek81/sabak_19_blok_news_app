@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:sabak_19_blok_news_app/bloc/news_bloc.dart';
-import 'package:sabak_19_blok_news_app/service.dart';
-import 'package:sabak_19_blok_news_app/widgets/loading_widget.dart';
+import 'package:sabak_19_blok_news_app/widgets/error_text.dart';
 import 'package:sabak_19_blok_news_app/widgets/news_card.dart';
 
 class MyHomePage extends StatefulWidget {
@@ -34,8 +33,21 @@ class _MyHomePageState extends State<MyHomePage> {
                 return NewsCard(news: news);
               });
         }
-        return Text("ERROR");
+        return ErrorText();
       }),
+    );
+  }
+}
+
+class LoadingWidget extends StatelessWidget {
+  const LoadingWidget({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Center(
+      child: CircularProgressIndicator(),
     );
   }
 }
